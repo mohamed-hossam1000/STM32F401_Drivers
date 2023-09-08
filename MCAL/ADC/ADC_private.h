@@ -26,15 +26,17 @@ typedef struct{
 	volatile u32 JOFR[4];
 	volatile u32 HTR;
 	volatile u32 LTR;
-	volatile u32 SQR1;
-	volatile u32 SQR2;
-	volatile u32 SQR3;
+	volatile u32 SQR[3];
 	volatile u32 JSQR;
 	volatile u32 JDR[4];
 	volatile u32 DR;
 }ADC_t;
 
+/* ADC_SR register bits */
+#define EOC			1
+
 /* ADC_CR1 register bits */
+#define EOCIE		5
 #define SCAN		8
 #define RES 		24
 
@@ -55,6 +57,6 @@ typedef struct{
 #define L 			20
 
 /* ADC_SQR3 register bits */
-#define SQR1		0
+#define SQ1		0
 
 #endif

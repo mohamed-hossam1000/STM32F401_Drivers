@@ -20,7 +20,7 @@
 
 typedef struct{
 	volatile u32 CPUID;
-	volatile u32 ICSE
+	volatile u32 ICSE;
 	volatile u32 VTOR;
 	volatile u32 AIRCR;
 	volatile u32 SCR;

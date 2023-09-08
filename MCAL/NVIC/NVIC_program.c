@@ -9,6 +9,7 @@
  * Author: Mohamed Hossam
  *
  *******************************************************************************/
+#include"../STD_TYPES.h"
 #include"NVIC_interface.h"
 #include"NVIC_private.h"
 

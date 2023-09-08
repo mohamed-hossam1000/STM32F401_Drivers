@@ -12,7 +12,7 @@
 
 #ifndef GPIO_INTERFACE_H_
 #define GPIO_INTERFACE_H_
-
+#include "../STD_TYPES.h"
 /*******************************************************************************
  * 								  	Definitions
  *******************************************************************************/
@@ -70,17 +70,18 @@
  * 								Functions Prototypes
  *******************************************************************************/
 
-void GPIO_voidSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_uMode);
+void GPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_uMode);
 
-void GPIO_voidSetPinOutputType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputType);
+void GPIO_vSetPinOutputType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputType);
 
-void GPIO_voidSetPinOutputSpeed(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputSpeed);
+void GPIO_vSetPinOutputSpeed(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputSpeed);
 
-void GPIO_voidSetPinPullType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8PullType);
+void GPIO_vSetPinPullType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8PullType);
 
 u8 GPIO_u8ReadPin(u8 Copy_u8PortName, u8 Copy_u8PinNum);
 
-void GPIO_voidWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data);
+void GPIO_vWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data);
 
+void GPIO_vTogglePin(u8 Copy_u8PortName, u8 Copy_u8PinNum);
 
 #endif 

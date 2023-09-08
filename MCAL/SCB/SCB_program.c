@@ -10,7 +10,7 @@
  *
  *******************************************************************************/
 
-#include"STD_TYPES.h"
+#include"../STD_TYPES.h"
 
 #include"SCB_interface.h"
 #include"SCB_private.h"

@@ -27,14 +27,22 @@ typedef enum{
 typedef struct{
 	ADC_Resolution 	res;
 	boolean  	 	scanMode;
-	boolean			singleConvFlag;
+	boolean			eachConvFlag;
 	boolean			contConv;
 	ADC_Prescaler	prescaler;
 }ADC_ConfigType;
 /*******************************************************************************
   							   Functions Prototypes
  ******************************************************************************/
+void ADC_vSetSequence(u8* Ptr_u8Arr, u8 Copy_u8Size);
 
 void ADC_vInit(const ADC_ConfigType* Ptr_config);
+
+void ADC_vStartConversion();
+
+void ADC_vSetCallBack(void (*Ptr_func) (void));
+
+u16 ADC_u16Read();
+
 
 #endif

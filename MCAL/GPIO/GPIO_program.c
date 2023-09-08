@@ -10,17 +10,17 @@
  *
  *******************************************************************************/
 
-#include "STD_TYPES.h"
-#include "BIT_MATHS.h"
-
+#include "../STD_TYPES.h"
+#include "../BIT_MATHS.h"
+#include "GPIO_interface.h"
 #include "GPIO_config.h"
 #include "GPIO_private.h"
-#include "GPIO_interface.h"
+
 
 /*
 * Description : Select the mode of a GPIO pin
 */
-void GPIO_voidSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode)
+void GPIO_vSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode)
 {
 	if(Copy_u8PinNum > PIN15_ID || Copy_u8Mode > MODE_ANALOG)
 	{
@@ -51,8 +51,6 @@ void GPIO_voidSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode)
 		case PORTH_ID:
 			GPIOH->MODER |= (Copy_u8Mode << Copy_u8PinNum);
 			break;
-		default:
-			/* ERROR */
 		}
 	}
 }
@@ -60,7 +58,7 @@ void GPIO_voidSetPinMode(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Mode)
 /*
 * Description : Select the output type of a GPIO pin
 */
-void GPIO_voidSetPinOutputType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputType)
+void GPIO_vSetPinOutputType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputType)
 {
 	if(Copy_u8PinNum > PIN15_ID || Copy_u8OutputType > OUTPUT_OPEN_DRIAN)
 	{
@@ -89,8 +87,6 @@ void GPIO_voidSetPinOutputType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8O
 		case PORTH_ID:
 			GPIOH->OTYPER |= (Copy_u8OutputType << Copy_u8PinNum);
 			break;
-		default:
-			/* ERROR */
 		}		
 	}	
 }
@@ -98,7 +94,7 @@ void GPIO_voidSetPinOutputType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8O
 /*
 * Description : Select the level speed of a GPIO pin
 */
-void GPIO_voidSetPinOutPutSpeed(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputSpeed)
+void GPIO_vSetPinOutPutSpeed(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8OutputSpeed)
 {
 	if(Copy_u8PinNum > PIN15_ID || Copy_u8OutputSpeed > OUTPUT_SPEED_VERY_HIGH)
 	{
@@ -129,8 +125,6 @@ void GPIO_voidSetPinOutPutSpeed(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8
 		case PORTH_ID:
 			GPIOH->OSPEEDER |= (Copy_u8OutputSpeed << Copy_u8PinNum);
 			break;
-		default:
-			/* ERROR */
 		}
 	}
 }
@@ -138,7 +132,7 @@ void GPIO_voidSetPinOutPutSpeed(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8
 /*
 * Description : Select pull up, pull down or no pull of a GPIO pin
 */
-void GPIO_voidSetPinPullType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8PullType)
+void GPIO_vSetPinPullType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8PullType)
 {
 	if(Copy_u8PinNum > PIN15_ID || Copy_u8PullType > PULL_DOWN)
 	{
@@ -169,8 +163,6 @@ void GPIO_voidSetPinPullType(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Pul
 		case PORTH_ID:
 			GPIOH->PUPDR |= (Copy_u8PullType << Copy_u8PinNum);
 			break;
-		default:
-			/* ERROR */
 		}
 	}
 }
@@ -208,8 +200,6 @@ u8 GPIO_u8ReadPin(u8 Copy_u8PortName, u8 Copy_u8PinNum)
 		case PORTH_ID:
 			L_u8Data = GET_BIT(GPIOH->IDR ,Copy_u8PinNum);
 			break;
-		default:
-			/* ERROR */
 		}		
 	}
 	/* return the result */
@@ -219,7 +209,7 @@ u8 GPIO_u8ReadPin(u8 Copy_u8PortName, u8 Copy_u8PinNum)
 /*
 * Description : write a value to a GPIO pin
 */
-void GPIO_voidWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data)
+void GPIO_vWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data)
 {
 	if(Copy_u8PinNum > PIN15_ID)
 	{
@@ -250,8 +240,6 @@ void GPIO_voidWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data)
 			case PORTH_ID:
 				SET_BIT(GPIOH->ODR ,Copy_u8PinNum);
 				break;
-			default:
-				/* ERROR */
 			}	
 		}
 		else if(Copy_u8Data == LOGIC_LOW)
@@ -277,8 +265,6 @@ void GPIO_voidWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data)
 			case PORTH_ID:
 				CLEAR_BIT(GPIOH->ODR ,Copy_u8PinNum);
 				break;
-			default:
-				/* ERROR */
 			}		
 		}
 		else
@@ -287,3 +273,38 @@ void GPIO_voidWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data)
 		}	
 	}
 }
+
+void GPIO_vTogglePin(u8 Copy_u8PortName, u8 Copy_u8PinNum)
+{
+	if(Copy_u8PinNum > PIN15_ID)
+	{
+		/* Do Nothing */
+	}
+	else
+	{
+		/* select PORT and Toggle the value of the required pin */
+		switch(Copy_u8PortName)
+		{
+		case PORTA_ID:
+			TOGGLE_BIT(GPIOA->ODR ,Copy_u8PinNum);
+			break;
+		case PORTB_ID:
+			TOGGLE_BIT(GPIOB->ODR ,Copy_u8PinNum);
+			break;
+		case PORTC_ID:
+			TOGGLE_BIT(GPIOC->ODR ,Copy_u8PinNum);
+			break;
+		case PORTD_ID:
+			TOGGLE_BIT(GPIOD->ODR ,Copy_u8PinNum);
+			break;
+		case PORTE_ID:
+			TOGGLE_BIT(GPIOE->ODR ,Copy_u8PinNum);
+			break;
+		case PORTH_ID:
+			TOGGLE_BIT(GPIOH->ODR ,Copy_u8PinNum);
+			break;
+		}
+	}
+
+}
+
