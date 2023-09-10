@@ -23,7 +23,7 @@ typedef enum{
  * 							   Functions Prototypes
  * ****************************************************************************/
 
-void IWDG_vinit(IWDG_Prescaler Copy_prescaler, u16 Copy_u16ReloadValue);
+void IWDG_vInit(IWDG_Prescaler Copy_prescaler, u16 Copy_u16ReloadValue);
 
 void IWDG_vReload();
 

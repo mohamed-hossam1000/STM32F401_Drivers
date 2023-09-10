@@ -9,7 +9,7 @@
  * Author: Mohamed Hossam
  *
  *******************************************************************************/
-
+#include"../STD_TYPES.h"
 #include"STK_interface.h"
 #include"STK_private.h"
 #include"STK_config.h"

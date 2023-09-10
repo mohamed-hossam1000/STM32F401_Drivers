@@ -21,7 +21,7 @@
    PLLP_2, PLLP_4, PLLP_6, PLLP_8 */
 #define PLLP_VALUE			PLLP_4
 /* range 50 : 432 */
-#define PLLN_VALUE			168
+#define PLLN_VALUE			144
 /* range 2 : 63 */
 #define PLLM_VALUE			4
 

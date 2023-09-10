@@ -308,3 +308,36 @@ void GPIO_vTogglePin(u8 Copy_u8PortName, u8 Copy_u8PinNum)
 
 }
 
+void GPIO_vSelectAlternateFunc(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8AFx)
+{
+	if(Copy_u8PinNum > PIN15_ID)
+	{
+		/* Do Nothing */
+	}
+	else
+	{
+		u8 regNum = Copy_u8PinNum >> 3;
+		u8 bitNum = (Copy_u8PinNum & 7) << 2;
+		switch(Copy_u8PortName)
+		{
+		case PORTA_ID:
+			GPIOA->AFR[regNum] = (GPIOA->AFR[regNum] & ~((u32)0xF << bitNum)) | (Copy_u8AFx << bitNum);
+			break;
+		case PORTB_ID:
+			GPIOB->AFR[regNum] = (GPIOB->AFR[regNum] & ~((u32)0xF << bitNum)) | (Copy_u8AFx << bitNum);
+			break;
+		case PORTC_ID:
+			GPIOC->AFR[regNum] = (GPIOC->AFR[regNum] & ~((u32)0xF << bitNum)) | (Copy_u8AFx << bitNum);
+			break;
+		case PORTD_ID:
+			GPIOD->AFR[regNum] = (GPIOD->AFR[regNum] & ~((u32)0xF << bitNum)) | (Copy_u8AFx << bitNum);
+			break;
+		case PORTE_ID:
+			GPIOE->AFR[regNum] = (GPIOE->AFR[regNum] & ~((u32)0xF << bitNum)) | (Copy_u8AFx << bitNum);
+			break;
+		case PORTH_ID:
+			GPIOH->AFR[regNum] = (GPIOH->AFR[regNum] & ~((u32)0xF << bitNum)) | (Copy_u8AFx << bitNum);
+			break;
+		}
+	}
+}

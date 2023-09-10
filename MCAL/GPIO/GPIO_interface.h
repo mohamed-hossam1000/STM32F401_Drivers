@@ -84,4 +84,6 @@ void GPIO_vWritePin(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8Data);
 
 void GPIO_vTogglePin(u8 Copy_u8PortName, u8 Copy_u8PinNum);
 
+void GPIO_vSelectAlternateFunc(u8 Copy_u8PortName, u8 Copy_u8PinNum, u8 Copy_u8AFx);
+
 #endif 

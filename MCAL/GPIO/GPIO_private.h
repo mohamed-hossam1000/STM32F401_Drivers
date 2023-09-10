@@ -36,8 +36,7 @@ volatile u32 IDR;
 volatile u32 ODR;
 volatile u32 BSRR;
 volatile u32 LCKR;
-volatile u32 AFRL;
-volatile u32 AFRH;
+volatile u32 AFR[2];
 }GPIOx_t;
 
 

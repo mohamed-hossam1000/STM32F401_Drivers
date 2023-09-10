@@ -13,8 +13,6 @@
 #ifndef STK_INTERFACE_H_
 #define STK_INTERFACE_H_
 
-#include"STD_TYPES.h"
-
 extern volatile u32 g_u32SystemTickCount;
 
 void STK_vInit(u32 Copy_u32Ticks);

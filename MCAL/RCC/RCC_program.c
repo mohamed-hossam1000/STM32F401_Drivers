@@ -9,7 +9,7 @@
  * Author: Mohamed Hossam
  *
  *******************************************************************************/
-#include"STD_TYPES.h"
+#include"../STD_TYPES.h"
 #include"RCC_private.h"
 #include"RCC_interface.h"
 #include"RCC_config.h"

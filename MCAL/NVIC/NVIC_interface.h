@@ -22,16 +22,16 @@
  * 								Functions Prototypes
  *******************************************************************************/
 
-void NVIC_voidEnableIRQ(u8 Copy_u8IRQn);
+void NVIC_vEnableIRQ(u8 Copy_u8IRQn);
 
-void NVIC_voidDisableIRQ(u8 Copy_u8IRQn);
+void NVIC_vDisableIRQ(u8 Copy_u8IRQn);
 
-void NVIC_voidSetPendingIRQ(u8 Copy_u8IRQn);
+void NVIC_vSetPendingIRQ(u8 Copy_u8IRQn);
 
-void NVIC_voidClearPendingIRQ(u8 Copy_u8IRQn);
+void NVIC_vClearPendingIRQ(u8 Copy_u8IRQn);
 
 u8 NVIC_u8GetActive(u8 Copy_u8IRQn);
 
-void NVIC_voidSetPriority(u8 Copy_u8IRQn, u8 Copy_u8Priority);
+void NVIC_vSetPriority(u8 Copy_u8IRQn, u8 Copy_u8Priority);
 
 #endif
