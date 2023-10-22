@@ -22,7 +22,20 @@
 #define APB1_BUS_ID				3
 #define APB2_BUS_ID				4
 
-
+/* Periphrals IDs */
+#define GPIOA_ID   0
+#define GPIOB_ID   1
+#define GPIOC_ID   2
+#define CRC_ID     12
+#define DMA1_ID    21
+#define DMA2_ID    22
+#define OTGFS_ID   7
+#define TIM2_ID    0
+#define TIM3_ID    1
+#define TIM4_ID    2
+#define TIM5_ID    3
+#define WWDG_ID    11
+#define USART1_ID  4
 /********************************************************************************
  * 								Functions Prototypes
  ********************************************************************************/
