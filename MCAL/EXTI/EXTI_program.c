@@ -10,7 +10,7 @@
  *
  *******************************************************************************/
 
-#include"STD_TYPES.h"
+#include"../STD_TYPES.h"
 
 #include"EXTI_interface.h"
 #include"EXTI_private.h"
@@ -92,6 +92,6 @@ void EXTI_vClearPendingInterrupt(u8 Copy_u8InterruptNum)
 
 void EXTI_vSelectInterruptSource(u8 Copy_u8InterruptNum, u8 Copy_u8Port)
 {
-	u8 L_regNum = Copy_u8InterruptNum >> 2, u8 L_bitNumber = (Copy_u8InterruptNum & 3) * 4;
-	SYSCFG_EXTICR(L_regNum) = (SYSCFG_EXTICR(L_regNum) & ~(15 << L_bitNumber)) | (1 << Copy_u8Port); 
+	u8 L_regNum = Copy_u8InterruptNum >> 2, L_bitNumber = (Copy_u8InterruptNum & 3) * 4;
+	SYSCFG_EXTICR(L_regNum) = (SYSCFG_EXTICR(L_regNum) & ~(0x0F << L_bitNumber)) | (Copy_u8Port << L_bitNumber);
 }

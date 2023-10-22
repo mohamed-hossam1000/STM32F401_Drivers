@@ -9,8 +9,8 @@
  * Author: Mohamed Hossam
  *
  *******************************************************************************/
-#ifndef EXTI_INTERFACE_H
-#define EXTI_INTERFACE_H
+#ifndef EXTI_PRIVATE_H
+#define EXTI_PRIVATE_H
 
 
 #define EXTI_BASE_ADDRESS 			0x40013C00
@@ -18,7 +18,6 @@
 #define SYSCFG_EXTICR(REG_NUMBER)	*((volatile u32*)(0x40013808 + ((REG_NUMBER) * 4)))
 
 #define EXTI 						((EXTI_t *) EXTI_BASE_ADDRESS)
-#define 
 
 typedef struct{
 	volatile u32 IMR;
